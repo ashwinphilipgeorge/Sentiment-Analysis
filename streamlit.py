@@ -7,6 +7,7 @@ from transformers import pipeline
 st.title('Text Sentiment Analysis')
 st.text('This app was created by Ashwin Philip George for the module CET023.')
 st.text('It simply takes in an input text and determines the sentiment(positive/negative) of the given text')
+st.text('Please be patient as the models take time to load')
 
 classifier =  pipeline('sentiment-analysis', "mrm8488/bert-small-finetuned-squadv2")
 
@@ -22,7 +23,7 @@ if st.button('Predict'):
     r_transformer = classifier(speech)
     
     if r_transformer[0]['score']:
-        st.write('Textblob predicts a positive sentiment with score: ' + str(r_transformer[0]['score']))
+        st.write('Transformer predicts a positive sentiment with score: ' + str(r_transformer[0]['score']))
     else:
-        st.write('Textblob predicts a negative sentiment with score: ' + str(r_transformer[0]['score']))
+        st.write('Transformer predicts a negative sentiment with score: ' + str(r_transformer[0]['score']))
 
